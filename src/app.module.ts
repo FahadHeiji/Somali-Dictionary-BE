@@ -5,8 +5,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { WordModule } from './words/words.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './config/configuration';
-import { WordController } from './words/words.controller';
-import { WordService } from './words/words.service';
 
 @Module({
   imports: [
@@ -22,7 +20,7 @@ import { WordService } from './words/words.service';
     }),
     WordModule,
   ],
-  controllers: [AppController, WordController],
-  providers: [AppService, WordService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
