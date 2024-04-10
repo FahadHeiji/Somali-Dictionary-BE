@@ -7,7 +7,7 @@ export class WordController {
 
   @Get('/')
   sayHello() {
-    return this.wordService.getWords();
+    return this.wordService.sayHello();
   }
   @Get('/words')
   getWords() {
