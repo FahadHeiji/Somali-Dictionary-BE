@@ -5,6 +5,10 @@ import { WordService } from './words.service';
 export class WordController {
   constructor(private wordService: WordService) {}
 
+  @Get('/')
+  sayHello() {
+    return this.wordService.getWords();
+  }
   @Get('/words')
   getWords() {
     return this.wordService.getWords();

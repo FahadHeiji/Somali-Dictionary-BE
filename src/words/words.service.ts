@@ -9,6 +9,9 @@ export class WordService {
     @InjectModel(CombinedWord.name) private wordModel: Model<CombinedWord>,
   ) {}
 
+  sayHello() {
+    return 'Hello';
+  }
   getWords() {
     return this.wordModel.find({}).limit(10).sort({ wordID: 1 });
   }
