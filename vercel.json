@@ -1,5 +1,8 @@
 {
   "version": 2,
+  "env": {
+    "Mongo_URI": "mongodb+srv://Dictoinary1:2nCpo1KJUVlESMgk@dictionary.w68ucgi.mongodb.net/Dictionary"
+  },
   "builds": [
     {
       "src": "src/main.ts",
