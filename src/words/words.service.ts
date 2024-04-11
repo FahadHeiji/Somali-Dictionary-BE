@@ -24,7 +24,6 @@ export class WordService {
       word = `${word}-`;
     }
     try {
-      // Use regex for case-insensitive search
       const regex = new RegExp(`^${word}`, 'i');
       const result = this.wordModel.find({ term: regex }).sort({ term: 1 });
       return result;
