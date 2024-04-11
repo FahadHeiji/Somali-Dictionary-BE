@@ -18,8 +18,8 @@ export class WordController {
     console.log(word);
     return this.wordService.searchWord(word);
   }
-  @Get('/searchWordID')
-  getWordByID(@Query('wordID') wordID: string) {
+  @Get('/search')
+  getWordByID(@Query('word') wordID: string) {
     console.log(wordID);
     return this.wordService.getWordByID(wordID);
   }
