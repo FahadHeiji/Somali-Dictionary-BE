@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CombinedWord } from 'src/schemas/Word.schema';
+import { CombinedWord } from '../schemas/Word.schema';
 
 @Injectable()
 export class WordService {
@@ -15,7 +15,7 @@ export class WordService {
   getWords() {
     return this.wordModel.find({}).limit(10).sort({ wordID: 1 });
   }
-  getWordByID(wordID) {
+  getWordByID(wordID : number) {
     return this.wordModel.findOne({ wordID });
   }
 

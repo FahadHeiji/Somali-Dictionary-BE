@@ -1,14 +1,10 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { WordService } from './words.service';
 
-@Controller()
+@Controller('api/v0')
 export class WordController {
   constructor(private wordService: WordService) {}
 
-  @Get('/')
-  sayHello() {
-    return this.wordService.sayHello();
-  }
   @Get('/words')
   getWords() {
     return this.wordService.getWords();
@@ -21,6 +17,6 @@ export class WordController {
   @Get('/search')
   getWordByID(@Query('word') wordID: string) {
     console.log(wordID);
-    return this.wordService.getWordByID(wordID);
+    return this.wordService.getWordByID(Number(wordID));
   }
 }

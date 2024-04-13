@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { WordModule } from './words/words.module';
-
 @Module({
   imports: [
     MongooseModule.forRoot(
