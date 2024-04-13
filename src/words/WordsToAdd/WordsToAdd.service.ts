@@ -10,9 +10,9 @@ export class WordsToAddService {
     @InjectModel(WordsToAdd.name) private wordsToAdd: Model<WordsToAdd>,
   ) {}
 
-  async addWord(addWordDto: AddWordDto) {
+  addWord(addWordDto: AddWordDto) {
     try {
-      const newWord = await new this.wordsToAdd(addWordDto);
+      const newWord =  new this.wordsToAdd(addWordDto);
       return newWord.save();
     } catch (err) {
       return new Error(err);

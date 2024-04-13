@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { WordsToComment } from 'src/schemas/WordsToComment.schema';
@@ -11,12 +11,11 @@ export class CommentsOnWordService {
     private wordsToComment: Model<WordsToComment>,
   ) {}
 
-  async addComment(addCommentDto: AddCommentDto) {
+   addComment(addCommentDto: AddCommentDto) {
     try {
-      const newComment = await new this.wordsToComment(addCommentDto);
-      return newComment.save();
-    } catch (err) {
-      return new Error(err);
+      const newComment =  new this.wordsToComment(addCommentDto);
+    } catch {
+      throw NotFoundException;
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { WordsToReport } from 'src/schemas/WordsToReport.schema';
@@ -14,9 +14,8 @@ export class ReportsOnWordService {
   async addReport(addReortDto: AddReportDto) {
     try {
       const newReport = await new this.reportModel(addReortDto);
-      return newReport.save();
-    } catch (err) {
-      return new Error(err);
+    } catch {
+      throw NotFoundException;
     }
   }
 }

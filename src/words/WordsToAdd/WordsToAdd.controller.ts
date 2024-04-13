@@ -15,7 +15,7 @@ export class WordsToAddController {
   @Post('/WordToAdd')
   @UsePipes(new ValidationPipe())
   addWord(@Body() addWord: AddWordDto) {
-    // return this.wordsToAddService.addWord(addWord);
-    console.log(addWord);
+    return this.wordsToAddService.addWord(addWord);
+    
   }
 }

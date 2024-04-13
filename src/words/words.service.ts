@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CombinedWord } from '../schemas/Word.schema';
@@ -13,10 +13,27 @@ export class WordService {
     return 'Hello';
   }
   getWords() {
-    return this.wordModel.find({}).limit(10).sort({ wordID: 1 });
+    try {
+      return this.wordModel.find({}).limit(10).sort({ wordID: 1 });
+    } catch {
+      throw NotFoundException;
+    }
   }
-  getWordByID(wordID : number) {
-    return this.wordModel.findOne({ wordID });
+  getLetterWords(letter: string) {
+    try {
+      const regex = new RegExp(`^${letter}`, 'i');
+      const result = this.wordModel.find({ term: regex }).sort({ term: 1 });
+      return result;
+    } catch {
+      throw NotFoundException;
+    }
+  }
+  getWordByID(wordID: number) {
+    try {
+      return this.wordModel.findOne({ wordID });
+    } catch {
+      throw NotFoundException;
+    }
   }
 
   searchWord(word: string) {
@@ -27,9 +44,8 @@ export class WordService {
       const regex = new RegExp(`^${word}`, 'i');
       const result = this.wordModel.find({ term: regex }).sort({ term: 1 });
       return result;
-    } catch (error) {
-      console.error('Error searching word:', error);
-      throw error;
+    } catch {
+      throw NotFoundException;
     }
   }
 }
