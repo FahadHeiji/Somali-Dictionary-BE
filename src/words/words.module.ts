@@ -6,6 +6,7 @@ import { WordController } from './words.controller';
 import { CommentsOnWordModule } from './commentWord/commentsOnWord.module';
 import { ReportsOnWordModule } from './reportWord/reportsOnWord.module';
 import { WordsToAddModule } from './WordsToAdd/WordsToAdd.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { WordsToAddModule } from './WordsToAdd/WordsToAdd.module';
     ReportsOnWordModule,
     CommentsOnWordModule,
   ],
-  controllers: [WordController],
+  controllers: [WordController, AppController],
   providers: [WordService],
 })
 export class WordModule {}
