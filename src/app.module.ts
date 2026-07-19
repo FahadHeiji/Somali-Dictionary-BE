@@ -4,7 +4,7 @@ import { WordModule } from './words/words.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://Dictoinary1:2nCpo1KJUVlESMgk@dictionary.w68ucgi.mongodb.net/Dictionary',
+      'mongodb+srv://Dictoinary1:1jArEmoN31qkv45z@dictionary.w68ucgi.mongodb.net/?appName=Dictionary',
     ),
     WordModule,
   ],
